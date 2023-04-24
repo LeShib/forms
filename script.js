@@ -7,9 +7,6 @@ const inputPw = document.getElementById("pwd");
 const inputPwConfirm = document.getElementById("pwd-confirm");
 const select = document.getElementById("toggle-darkmode");
 const body = document.querySelector("body");
-const sections = document.querySelectorAll("section");
-const header = document.querySelector("header");
-const footer = document.querySelector("footer");
 const divs = document.querySelectorAll("div");
 const spanPw = document.createElement("span");
 const spanPwConfirm = document.createElement("span");
@@ -21,11 +18,10 @@ function displayText(){
 }
 
 function isMajor(){
-    if(inputAge.value < 18){
-        hardTruthSec.style.display = "none";
-    } else {
-        hardTruthSec.style.display = "block";
+    if(inputAge.value >= 18){
         hardTruthSec.style.visibility = "visible";
+    } else {
+        hardTruthSec.style.visibility = "hidden";
     }
 }
 
@@ -39,16 +35,13 @@ function validation(){
         spanPwConfirm.innerHTML = "incorrect password (the value does not match the first value)";
     }else if(inputPw.value.length < 6){
         inputPw.style.border = "1px solid red";
-        inputPwConfirm.style.border = "1px solid red";
         inputPw.style.backgroundColor = "red";
-        inputPwConfirm.style.backgroundColor = "red";
         spanPw.innerHTML = "incorrect password (must contain min 6 characters)";
         spanPwConfirm.innerHTML = "";
     }else if(inputPw.value != inputPwConfirm.value){
-        inputPw.style.border = "1px solid red";
         inputPwConfirm.style.border = "1px solid red";
-        inputPw.style.backgroundColor = "red";
         inputPwConfirm.style.backgroundColor = "red";
+        spanPw.innerHTML = "";
         spanPwConfirm.innerHTML = "incorrect password (the value does not match the first value)";
     }else{
         inputPw.style.border = "1px solid green";
@@ -66,25 +59,9 @@ function darkMode(){
     if (select.value === "dark") {
         body.style.backgroundColor = "black";
         body.style.color = "white";
-        header.style.backgroundColor = "black";
-        header.style.color = "white";
-        footer.style.backgroundColor = "black";
-        footer.style.color = "white";
-        sections.forEach(section => {
-          section.style.backgroundColor = "black";
-          section.style.color = "white";
-        });
     }else{
         body.style.backgroundColor = "white";
         body.style.color = "black";
-        header.style.backgroundColor = "white";
-        header.style.color = "black";
-        footer.style.backgroundColor = "white";
-        footer.style.color = "black";
-        sections.forEach(section => {
-            section.style.backgroundColor = "white";
-            section.style.color = "black";
-        });
     }
 }
 
